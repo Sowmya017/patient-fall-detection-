@@ -1,0 +1,60 @@
+project:
+  seed: 42
+  device: cuda
+  num_workers: 2
+  out_dir: /content/drive/MyDrive/GP Files/HIOD/runs/Run_3
+data:
+  base_dir: /content/drive/MyDrive/GP Files/HIOD/Hospital_Scene_Data-main
+  image_label_pairs:
+  - images: image/image1
+    labels: labels/label1
+  - images: image/image2
+    labels: labels/label2
+  - images: image/image3
+    labels: labels/label3
+  - images: image/image4
+    labels: labels/label4
+  - images: image/image5
+    labels: labels/label5
+  val_ratio: 0.2
+  class_map:
+    staff: medical_staff
+    patient: patient
+    visitor: other
+    person: other
+preprocess:
+  output_root: /content/drive/MyDrive/GP Files/HIOD/hiod_role_crops
+  crop_padding: 0.15
+  min_box_area: 2500
+  max_aspect_ratio: 6.0
+  save_debug_samples: 50
+  enable_dedup: true
+  dedup_phash_thresh: 6
+train:
+  model: mobilenet_v3_large
+  pretrained: true
+  num_classes: 3
+  img_size: 224
+  batch_size: 16
+  epochs: 45
+  lr: 0.0003
+  min_lr: 1.0e-05
+  weight_decay: 0.0001
+  label_smoothing: 0.03
+  amp: true
+  use_class_weights: true
+  use_weighted_sampler: true
+  early_stopping_patience: 10
+augment:
+  hflip: 0.5
+  color_jitter: 0.25
+  random_erasing: 0.15
+  random_crop_scale:
+  - 0.8
+  - 1.0
+  rotation_deg: 10
+  translate: 0.05
+eval:
+  save_confusion_matrix: true
+  confusion_matrix_path: /content/drive/MyDrive/GP Files/HIOD/runs/Run_3/confusion_matrix.png
+  normalized_confusion_matrix_path: /content/drive/MyDrive/GP Files/HIOD/runs/Run_3/confusion_matrix_normalized.png

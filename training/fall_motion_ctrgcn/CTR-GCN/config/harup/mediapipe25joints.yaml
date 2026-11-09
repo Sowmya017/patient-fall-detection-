@@ -1,0 +1,52 @@
+work_dir: ./work_dir/harup_mediapipe25joints_72f_impact_v2
+
+phase: train
+save_score: True
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 2
+  num_point: 25
+  num_person: 2
+  graph: graph.ntu_rgb_d.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+
+# weights (IMPORTANT)
+weights: "C:/GP/CTRGCN/CTRGCN_NTU120_CSub_joint_84.9-20260301T152150Z-1-001/CTRGCN_NTU120_CSub_joint_84.9/runs-58-57072.pt"
+ignore_weights: [fc]
+
+# feeder
+feeder: feeders.feeder_harup.Feeder
+
+train_feeder_args:
+  data_path: F:/GP_Dataset/Fall72_18fps_ImpactCentered/ctrgcn_npy/train_data.npy
+  label_path: F:/GP_Dataset/Fall72_18fps_ImpactCentered/ctrgcn_npy/train_label.pkl
+  debug: False
+  window_size: 72
+ 
+
+test_feeder_args:
+  data_path: F:/GP_Dataset/Fall72_18fps_ImpactCentered/ctrgcn_npy/val_data.npy
+  label_path: F:/GP_Dataset/Fall72_18fps_ImpactCentered/ctrgcn_npy/val_label.pkl
+  window_size: 72
+
+# training
+device: [0]
+batch_size: 16
+test_batch_size: 16
+
+num_epoch: 25
+save_epoch: 1
+
+# optimizer (will be overridden dynamically)
+optimizer: Adam
+base_lr: 0.0003
+weight_decay: 0.0005
+
+# logging
+log_interval: 20
+save_interval: 1
+eval_interval: 1
+num_worker: 0

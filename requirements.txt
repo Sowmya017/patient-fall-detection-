@@ -1,0 +1,15 @@
+numpy<2
+opencv-python<4.13
+PyYAML
+tqdm
+ultralytics
+mediapipe
+Pillow
+matplotlib
+pandas
+scikit-learn
+torch
+torchvision
+tensorboardX
+streamlit>=1.35
+plotly>=5.20

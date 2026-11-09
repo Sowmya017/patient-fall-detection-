@@ -1,0 +1,37 @@
+input:
+  root_dir: F:/GP_Dataset/activities6-11
+
+output:
+  # skeleton_root: "C:/GP/HAR-UP/FinalSkeletonExtractedSamples"
+  skeleton_root: C:/GP/HAR-UP/FinalSkeletonExtractedSamples
+  save_overlay: true
+  overlay_root: C:/GP/HAR-UP/FinalSkeletonExtractedSamples/HAR-UP_MediaPipeOverlay
+  save_json_metadata: true
+  summary_filename: "summary.json"
+
+dataset:
+  fps: 18.0
+
+sample_discovery:
+  # A sample is any folder that contains image files.
+  image_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".bmp"
+  min_images_per_sample: 2
+  recursive: true
+
+mediapipe:
+  model_complexity: 2
+  min_detection_confidence: 0.7
+  min_tracking_confidence: 0.7
+  smooth_landmarks: true
+  static_image_mode: false
+  enable_segmentation: false
+
+runtime:
+  skip_existing: true
+  overwrite_summary: true
+  verbose_errors: true
+  sort_mode: "natural"   # "natural" or "lexicographic"

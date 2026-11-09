@@ -1,0 +1,28 @@
+project:
+  seed: 42
+
+data:
+  roots:
+    - C:/GP/Dataset/nturgbd_skeletons_s001_to_s017
+    - C:/GP/Dataset/nturgbd_skeletons_s018_to_s032
+  recursive: true
+  dedupe_by_filename: true
+  num_joints: 25
+  max_bodies: 2
+
+  # optional: filter actions (NTU120 -> 120)
+  num_classes: 120
+  filter_action_max: 120
+
+  out_dir: C:/GP/cache/ntu_ctrgcn_preprocessed
+
+preprocess:
+  T: 300
+  dtype: "float16"     # "float32" or "float16"
+  pad_mode: "zeros"    # "zeros" or "repeat_last"
+
+  # normalization (CTR-GCN official preprocessing typically does NOT do per-frame scale normalize)
+  # keep false unless you trained your own checkpoint with it
+  normalize: false
+  center_joint: 1      # 0-based joint index (1 is often "spine base" in some conventions)
+  scale_joint: 0       # joint used for scaling distance (if normalize=true)

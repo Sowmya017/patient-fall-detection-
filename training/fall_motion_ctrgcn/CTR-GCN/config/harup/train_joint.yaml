@@ -1,0 +1,47 @@
+work_dir: ./work_dir/harup_run3/ctrgcn_joint
+
+# feeder
+feeder: feeders.feeder_harup.Feeder
+train_feeder_args:
+  data_path: ./data/harup/train_data.npy
+  label_path: ./data/harup/train_label.pkl
+  debug: False
+
+test_feeder_args:
+  data_path: ./data/harup/val_data.npy
+  label_path: ./data/harup/val_label.pkl
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 5
+  num_point: 33
+  num_person: 1
+  graph: graph.harup_mediapipe.Graph
+  graph_args:
+    labeling_mode: spatial
+  in_channels: 3
+
+
+# optimization
+weight_decay: 0.0005
+base_lr: 0.01
+warm_up_epoch: 5
+step: [10, 20]
+
+# training
+device: [0]
+batch_size: 16
+test_batch_size: 8
+num_epoch: 30
+nesterov: True
+
+# evaluation / logging
+save_interval: 1
+eval_interval: 1
+
+# pretrained checkpoint
+weights: "C:/GP/CTRGCN/CTRGCN_NTU120_CSub_joint_84.9-20260301T152150Z-1-001/CTRGCN_NTU120_CSub_joint_84.9/runs-58-57072.pt"
+ignore_weights:
+  - fc.weight
+  - fc.bias

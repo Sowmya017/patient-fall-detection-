@@ -1,0 +1,89 @@
+# ckpt_path: "C:/GP/CTRGCN/CTRGCN_NTU120_CSub_joint_84.9-20260301T152150Z-1-001/CTRGCN_NTU120_CSub_joint_84.9/runs-58-57072.pt"
+
+# data:
+#   format: "kmp"
+#   x_kmp_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/X.kmp"
+#   y_npy_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/y.npy"
+#   meta_npy_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/meta.npy"
+#   info_npy_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/info.npy"   # optional
+#   split: "test"
+
+#   # NEW: pick one
+#   split_idx_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/csub_test_idx.npy"
+#   # split_idx_path: "C:/GP/cache/ntu_ctrgcn_preprocessed_new/cset_test_idx.npy"
+
+# device: "cuda"
+# batch_size: 128
+# num_workers: 0
+# pin_memory: true
+
+# # Model params
+# num_class: 120
+# num_point: 25
+# num_person: 2
+
+# # IMPORTANT: this is how the CTR-GCN repo expects graph
+# model:
+#   model_class: "model.ctrgcn.Model"
+#   graph: "graph.ntu_rgb_d.Graph"
+#   graph_args:
+#     labeling_mode: "spatial"
+#   in_channels: 3
+#   drop_out: 0
+#   adaptive: true
+
+# # Input layout of X.kmp samples
+# input:
+#   layout: "NCTVM"     # or "NTVCM" (flip if needed)
+#   dtype: null         # leave null to read from meta.npy
+
+# test_time:
+#   fixed_T: 300
+#   pad_mode: "zeros"         # zeros or repeat_last
+#   use_bone: false
+#   use_velocity: false
+
+# metrics:
+#   topk: [1, 5]
+
+
+
+
+
+
+
+# ---- runtime ----
+device: "cuda:0"
+batch_size: 16
+num_workers: 0
+pin_memory: true
+print_first_batch: true
+
+# ---- data ----
+data:
+  # Choose ONE:
+  npz_path: "C:/GP/CTRGCN/CTR-GCN/data/ntu120/NTU120_CSub.npz"
+  # npz_path: "C:/GP/CTRGCN/CTR-GCN/data/ntu120/NTU120_CSet.npz"
+  split: "test"
+  fixed_T: 300
+
+# ---- model ----
+num_class: 120
+num_point: 25
+num_person: 2
+
+model:
+  model_class: "model.ctrgcn.Model"
+  graph: "graph.ntu_rgb_d.Graph"
+  graph_args:
+    labeling_mode: "spatial"
+  in_channels: 3
+  drop_out: 0
+  adaptive: true
+
+# ---- checkpoint ----
+ckpt_path: "C:/GP/CTRGCN/CTRGCN_NTU120_CSub_joint_84.9-20260301T152150Z-1-001/CTRGCN_NTU120_CSub_joint_84.9/runs-58-57072.pt"
+
+# ---- metrics ----
+metrics:
+  topk: [1, 5]

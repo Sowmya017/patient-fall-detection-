@@ -1,0 +1,101 @@
+{
+  "run_name": "Run_3",
+  "source_folder": "C:\\Users\\Victus\\Downloads\\Run_3-20260603T143947Z-3-001\\Run_3",
+  "model": "mobilenet_v3_large",
+  "num_classes": 3,
+  "class_map": {
+    "staff": "medical_staff",
+    "patient": "patient",
+    "visitor": "other",
+    "person": "other"
+  },
+  "epochs_completed": 29,
+  "configured_epochs": 45,
+  "best_val_accuracy": {
+    "epoch": 25,
+    "train_loss": 0.11899262413479923,
+    "val_acc": 0.8092592592592592,
+    "val_macro_f1": 0.769520050807476,
+    "val_weighted_f1": 0.8092070656666465,
+    "lr": 0.00013984337282619026,
+    "time_sec": 24.757929801940918
+  },
+  "best_val_macro_f1": {
+    "epoch": 19,
+    "train_loss": 0.1273539344859279,
+    "val_acc": 0.8074074074074075,
+    "val_macro_f1": 0.7785515630313449,
+    "val_weighted_f1": 0.8111280358683055,
+    "lr": 0.00019980746418436736,
+    "time_sec": 25.87642478942871
+  },
+  "best_val_weighted_f1": {
+    "epoch": 29,
+    "train_loss": 0.11340565222596365,
+    "val_acc": 0.8092592592592592,
+    "val_macro_f1": 0.7743327739185237,
+    "val_weighted_f1": 0.8136342804045097,
+    "lr": 0.00010068204395469276,
+    "time_sec": 26.157044887542725
+  },
+  "last_epoch": {
+    "epoch": 29,
+    "train_loss": 0.11340565222596365,
+    "val_acc": 0.8092592592592592,
+    "val_macro_f1": 0.7743327739185237,
+    "val_weighted_f1": 0.8136342804045097,
+    "lr": 0.00010068204395469276,
+    "time_sec": 26.157044887542725
+  },
+  "total_training_time_sec": 761.9967579841614,
+  "artifacts": {
+    "confusion_matrix": "confusion_matrix.png",
+    "confusion_matrix_normalized": "confusion_matrix_normalized.png",
+    "training_history": "training_history.json",
+    "config": "config_used.yaml",
+    "readme": "README.md"
+  },
+  "selected_checkpoint": {
+    "selection_metric": "val_macro_f1",
+    "best_epoch": 19,
+    "best_macro_f1": 0.7785515630313449,
+    "best_checkpoint_original_path": "/content/drive/MyDrive/GP Files/HIOD/runs/Run_3/best.pt",
+    "last_checkpoint_original_path": "/content/drive/MyDrive/GP Files/HIOD/runs/Run_3/last.pt"
+  },
+  "final_validation_report_best_checkpoint": {
+    "medical_staff": {
+      "precision": 0.89,
+      "recall": 0.81,
+      "f1_score": 0.85,
+      "support": 340
+    },
+    "other": {
+      "precision": 0.59,
+      "recall": 0.7,
+      "f1_score": 0.64,
+      "support": 97
+    },
+    "patient": {
+      "precision": 0.81,
+      "recall": 0.89,
+      "f1_score": 0.85,
+      "support": 103
+    },
+    "accuracy": {
+      "score": 0.81,
+      "support": 540
+    },
+    "macro_avg": {
+      "precision": 0.76,
+      "recall": 0.8,
+      "f1_score": 0.78,
+      "support": 540
+    },
+    "weighted_avg": {
+      "precision": 0.82,
+      "recall": 0.81,
+      "f1_score": 0.81,
+      "support": 540
+    }
+  }
+}

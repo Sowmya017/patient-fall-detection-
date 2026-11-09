@@ -1,0 +1,87 @@
+work_dir: ./work_dir/harup_openpose/ctrgcn_joint
+model_saved_name: ./work_dir/harup_openpose/ctrgcn_joint/runs
+config: ./config/harup_openpose/train_joint.yaml
+phase: train
+save_score: true
+seed: 1
+log_interval: 100
+save_interval: 1
+save_epoch: 1
+eval_interval: 1
+print_log: true
+show_topk: [1, 5]
+
+# -----------------------------
+# Data
+# -----------------------------
+feeder: feeders.feeder_harup_openpose.Feeder
+num_worker: 4
+
+train_feeder_args:
+  data_path: F:/GP_Dataset/HAR-UP-Preprocessed/train_data_m2.npy
+  label_path: F:/GP_Dataset/HAR-UP-Preprocessed/train_label.pkl
+  debug: false
+  normalization: false
+  use_mmap: true
+  p_interval: 1
+  random_choose: false
+  random_shift: false
+  random_move: false
+  random_rot: false
+  window_size: 300
+  bone: false
+  vel: false
+
+test_feeder_args:
+  data_path: F:/GP_Dataset/HAR-UP-Preprocessed/val_data_m2.npy
+  label_path: F:/GP_Dataset/HAR-UP-Preprocessed/val_label.pkl
+  debug: false
+  normalization: false
+  use_mmap: true
+  p_interval: 1
+  random_choose: false
+  random_shift: false
+  random_move: false
+  random_rot: false
+  window_size: 300
+  bone: false
+  vel: false
+
+# -----------------------------
+# Model
+# -----------------------------
+model: model.ctrgcn.Model
+model_args:
+  num_class: 5          # change this if you keep fewer/more HAR-UP activities
+  num_point: 25          # OpenPose BODY_25
+  num_person: 2
+  graph: graph.openpose_body25.Graph
+  graph_args:
+    labeling_mode: spatial
+  in_channels: 3         # x, y, confidence
+  drop_out: 0.5
+
+weights: null
+ignore_weights: []
+
+# -----------------------------
+# Optimizer
+# -----------------------------
+device: [0]
+base_lr: 0.05
+step: [20, 40]
+warm_up_epoch: 5
+optimizer: SGD
+nesterov: true
+batch_size: 8
+test_batch_size: 8
+start_epoch: 0
+num_epoch: 60
+weight_decay: 0.0005
+
+
+# pretrained checkpoint
+weights: "C:/GP/CTRGCN/CTRGCN_NTU120_CSub_joint_84.9-20260301T152150Z-1-001/CTRGCN_NTU120_CSub_joint_84.9/runs-58-57072.pt"
+ignore_weights:
+  - fc.weight
+  - fc.bias

@@ -1,0 +1,7 @@
+sample_index,path,true_label,true_index,pred_label,pred_index,fall_probability_max,fall_probability_mean,fall_probability_final,best_window_start,best_window_end,num_windows,num_frames,num_pose_frames,pose_detection_rate,cache_hit
+625,F:\GP_Dataset\Subjects\Subject16\Activity05\Trial3\Subject16Activity5Trial3Camera2,fall,1,non_fall,0,2.2577030904358253e-05,2.2577030904358253e-05,2.2577030904358253e-05,0,71,1,151,17,0.1125827814569536,False
+277,F:\GP_Dataset\Subjects\Subject05\Activity02\Trial3\Subject5Activity2Trial3Camera2,fall,1,non_fall,0,0.0509255491197109,0.0063662755332704,1.2280130640879524e-17,0,71,8,189,188,0.9947089947089948,False
+275,F:\GP_Dataset\Subjects\Subject05\Activity02\Trial2\Subject5Activity2Trial2Camera2,fall,1,non_fall,0,0.1372454315423965,0.0196808793544569,2.1918702259426937e-05,0,71,8,188,187,0.9946808510638298,False
+423,F:\GP_Dataset\Subjects\Subject10\Activity02\Trial1\Subject10Activity2Trial1Camera2,fall,1,non_fall,0,0.1821933686733245,0.0260276241324906,2.0081940277361101e-10,0,71,7,172,170,0.9883720930232558,False
+614,F:\GP_Dataset\Subjects\Subject16\Activity04\Trial1\Subject16Activity4Trial1Camera1,fall,1,non_fall,0,0.2135640382766723,0.0305091685080277,2.0123300595309423e-11,0,71,7,168,167,0.9940476190476192,False
+222,F:\GP_Dataset\Subjects\Subject03\Activity03\Trial3\Subject3Activity3Trial3Camera2,fall,1,non_fall,0,0.2784158587455749,0.0450850172388896,0.0004763737379107,0,71,8,184,183,0.9945652173913044,False
